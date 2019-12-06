@@ -52,10 +52,12 @@ public class StreamUtils {
 			}
 		}
 	}
+
 	
 	public static String getFileContent(String FileFullName) {
 		return getFileContent(new File(FileFullName));
 	}
+	
 	/*
 	 * 以流的方式，读取文本文件内容
 	 */
@@ -64,7 +66,7 @@ public class StreamUtils {
 		try {
 			 inputStream = new FileInputStream(file);
 			 byte[] b= new byte[1024];
-			 String str=null;
+			 String str="";
 			 while(inputStream.read(b)!=-1){
 				 str+=new String(b);
 			 }
@@ -90,7 +92,7 @@ public class StreamUtils {
 	}
 	
 	public static void main(String[] args) {
-		//System.out.println(getFileContent("D:\\CMS\\day6\\readme.txt"));
 		System.out.println(getFileContent("D:\\CMS\\day6\\readme.txt"));
+		System.out.println(readTextFile(new File("D:\\CMS\\day6\\readme.txt"))+"======");
 	}
 }

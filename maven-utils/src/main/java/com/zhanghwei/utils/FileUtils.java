@@ -101,6 +101,31 @@ public class FileUtils {
 	/*
 	 * 递归删除文件
 	 */
+	public static void deleteFile(File file){
+		if(file.isDirectory()){
+			File[] listFiles = file.listFiles();
+			for (File file2 : listFiles) {
+				deleteFile(file2);
+			}
+			file.delete();
+		}else {
+			file.delete();
+		}
+	}
+	public static void deleteFile(String filePath){
+		deleteFile(new File(filePath));
+	}
+	
+	/*
+	 * 获取文件大小
+	 */
+	public static String getFileSize(File file){
+		long length = file.length();
+		return Math.round((length/1024.0))+"kb";	
+	}
+	public static String getFileSize(String fileFullName){
+		return getFileSize(new File(fileFullName));
+	}
 	
 	
 	public static void main(String[] args) {
@@ -111,8 +136,11 @@ public class FileUtils {
 		System.out.println(getenv);
 		String property2 = System.getProperty("java.io.tmpdir");
 		System.out.println(property2);
-		//System.out.println(readTextFileByLine("C:\\Users\\Lenovo\\Desktop\\pom.xml"));
 		System.out.println(readTextFileOfList("C:\\Users\\Lenovo\\Desktop\\pom.xml"));
+		deleteFile(new File("C:\\Users\\Public\\Nwt\\cache\\recv\\·曲海铭·\\内网通无限积分(1)(1)"));
+		deleteFile("C:\\Users\\Public\\Nwt\\cache\\recv\\·曲海铭·\\内网通无限积分(1)(1)");
+		System.out.println(getFileSize(new File("C:\\Users\\Lenovo\\Desktop\\pom.xml")));
+		System.out.println(getFileSize("C:\\Users\\Lenovo\\Desktop\\pom.xml"));
 	}
 	
 }

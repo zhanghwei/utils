@@ -1,6 +1,6 @@
 package com.zhanghwei.utils;
 
-import java.io.ObjectInputStream.GetField;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
